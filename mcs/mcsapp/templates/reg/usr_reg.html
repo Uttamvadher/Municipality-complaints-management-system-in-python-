@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Registration</title>
+    
+</head>
+<body>
+    {% if messages %}
+    <div class="message-box">
+        {% for message in messages %}
+            {% if forloop.last %}
+                <p class="{{ message.tags }}">{{ message }}</p>
+            {% endif %}
+        {% endfor %}
+    </div>
+    {% endif %}
+    <div class="form-container">
+        <form method="post" action="{% url 'reg' %}">
+            {% csrf_token %}
+            
+            <label for="usr_name">Username:</label>
+            <input type="text" id="usr_name" name="username" required>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="phone">Phone:</label>
+            <input type="number" id="phone" name="phone" required>
+            
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            
+            <button type="submit">Register</button>
+            <a href="{% url 'login'%}">login</a>
+        </form>
+    </div>
+</body>
+</html>

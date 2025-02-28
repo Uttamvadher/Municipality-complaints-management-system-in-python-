@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Complaint</title>
+</head>
+<body>
+
+    <h2>Submit a Complaint</h2>
+
+    <form method="post" action="{% url 'submit_complaint' %}">
+        {% csrf_token %}
+        
+        <label for="department">Department:</label>
+        <select id="department" name="department" required>
+            <option value="Water">Water Supply</option>
+            <option value="Electricity">Electricity</option>
+            <option value="Sanitation">Sanitation</option>
+            <option value="Road">Road Maintenance</option>
+        </select>
+        <label for="name">User:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="address">Address:</label>
+        <input type="text" id="address" name="address" required>
+
+        <label for="area">Area:</label>
+        <input type="text" id="area" name="area" required>
+
+        <label for="city">City:</label>
+        <input type="text" id="city" name="city" required>
+
+        <label for="pincode">Pincode:</label>
+        <input type="text" id="pincode" name="pincode" required>
+
+        <label for="description">Complaint Description:</label>
+        <textarea id="description" name="description" rows="4" required></textarea>
+
+          <label for="resolved">Resolved:</label>
+          <input type="checkbox" id="resolved" name="resolved">
+
+
+        <button type="submit">Submit Complaint</button>
+    </form>
+
+</body>
+</html>
