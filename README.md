@@ -20,46 +20,59 @@ The **Municipal Complaint System (MCS)** is a Python-based application designed 
 - **Bootstrap** – Responsive design (if applicable)  
 
 ## 📂 Project Structure  
-mcsapp/
-│── apps.py
-│── models.py
-│── structure.txt
-│── urls.py
-│── views.py
-│── __init__.py
-│
-├── migrations/
-│   ├── 0001_initial.py
-│   ├── 0002_alter_complaint_department.py
-│   ├── 0003_admintoken_user_admin_user_is_resolved.py
-│   ├── 0004_user_token.py
-│   ├── 0005_alter_user_token.py
-│   ├── __init__.py
-│   ├── __pycache__/
-│
-├── static/
-│   ├── css/
-│   │   ├── styles.css
-│
-├── templates/
-│   ├── app/
-│   │   ├── analysis.html
-│   │   ├── complaint_form.html
-│   │   ├── home.html
-│   │   ├── password_protect.html
-│   │   ├── view_complaints.html
-│   ├── reg/
-│   │   ├── login.html
-│   │   ├── usr_reg.html
-│
-└── __pycache__/
-    ├── admin.cpython-311.pyc
-    ├── apps.cpython-311.pyc
-    ├── models.cpython-311.pyc
-    ├── urls.cpython-311.pyc
-    ├── views.cpython-311.pyc
-    ├── __init__.cpython-311.pyc
+# Municipal Complaint System (MCS)
 
+## Project Structure: `mcsapp`
+
+```
+Django Project Root
+│   manage.py                     # Django management script
+│   structure.txt                  # Project structure file
+│
+├── mcs/                           # Main project settings directory
+│   ├── asgi.py                    # ASGI configuration
+│   ├── settings.py                # Project settings
+│   ├── urls.py                     # URL configurations
+│   ├── wsgi.py                    # WSGI configuration
+│   ├── __init__.py                 # Init file for module recognition
+│   ├── __pycache__/                 # Compiled Python files
+│
+├── mcsapp/                         # Main application
+│   ├── apps.py                     # Application configuration
+│   ├── models.py                   # Database models
+│   ├── urls.py                     # Application-specific URL patterns
+│   ├── views.py                    # Business logic and views
+│   ├── __init__.py                  # Module recognition file
+│   ├── __pycache__/                  # Compiled Python files
+│   │
+│   ├── migrations/                  # Database migration files
+│   │   ├── 0001_initial.py           # Initial migration
+│   │   ├── 0002_alter_complaint_department.py 
+│   │   ├── 0003_admintoken_user_admin_user_is_resolved.py
+│   │   ├── 0004_user_token.py
+│   │   ├── 0005_alter_user_token.py
+│   │   ├── __init__.py
+│   │   ├── __pycache__/              # Compiled migration files
+│   │
+│   ├── static/                        # Static files (CSS, JS, Images)
+│   │   ├── css/
+│   │   │   ├── styles.css             # Stylesheet
+│   │
+│   ├── templates/                      # HTML templates
+│   │   ├── app/                         # Templates for complaints module
+│   │   │   ├── analysis.html
+│   │   │   ├── complaint_form.html
+│   │   │   ├── home.html
+│   │   │   ├── password_protect.html
+│   │   │   ├── view_complaints.html
+│   │   │
+│   │   ├── reg/                         # Templates for user registration & auth
+│   │   │   ├── login.html
+│   │   │   ├── usr_reg.html
+│
+└── __pycache__/                        # Compiled Python files
+
+```
 
 ## 🎯 Objectives  
 - Improve municipal governance by providing a digital complaint management system.  
