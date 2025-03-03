@@ -4,18 +4,12 @@
 ## 📌 Project Overview  
 The **Municipal Complaint System (MCS)** is a Python-based application designed to streamline the process of lodging and managing municipal complaints. This project provides an efficient platform for residents to report issues related to infrastructure, sanitation, water supply, and other public services. The system ensures that complaints are tracked, managed, and resolved efficiently by the municipal authorities.  
 
-## 🚀 Features  
-✅ **User Registration & Authentication** – Secure login system for users and administrators.  
-✅ **Complaint Submission** – Users can file complaints with category selection and descriptions.  
-✅ **Status Tracking** – Users can check the status of their complaints in real-time.  
-✅ **Admin Dashboard** – Authorities can view, assign, and update complaint statuses.  
-✅ **Search & Filter** – Users and admins can search complaints by ID, category, or status.  
-✅ **Feedback System** – Users can provide feedback after complaint resolution.  
+
 
 ## 🛠 Technologies Used  
 - **Python** – Core programming language  
-- **Django / Flask** – Web framework (if applicable)  
-- **SQLite / MySQL** – Database for storing complaints and user data  
+- **Django** – Web framework (if applicable)  
+- **MySQL** – Database for storing complaints and user data  
 - **HTML, CSS, JavaScript** – Frontend for user interface  
 - **Bootstrap** – Responsive design (if applicable)  
 
