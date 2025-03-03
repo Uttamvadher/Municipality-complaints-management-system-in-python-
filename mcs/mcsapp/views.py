@@ -1,10 +1,9 @@
-from django.shortcuts import render
-
+from django.db.models.fields import return_None
+from django.shortcuts import render,redirect,get_object_or_404
 from django.contrib import messages
 from django.contrib.auth import authenticate, login as auth_login, logout
 from django.contrib.auth.hashers import check_password,make_password
 from django.utils.timezone import now
-from django.contrib.auth.decorators import login_required
 from .models import Complaint,User
 import matplotlib.pyplot as plt
 import matplotlib
@@ -20,6 +19,9 @@ def reg(request):
         email = request.POST.get("email")
         phone = request.POST.get("phone")
         password = request.POST.get("password")
+        token = request.POST.get("token")
+
+
 
         if User.objects.filter(username=username).exists():
             messages.error(request,"Username already taken!")
@@ -33,10 +35,16 @@ def reg(request):
             username=username,
             email=email,
             phone=phone,
-            password=hashed_password 
+            password=hashed_password,
+            token=token
+
 
         )
+
+       
         user.save()
+
+
         
         messages.success(request, "Registration successful!")
         
@@ -125,7 +133,7 @@ def analysis(request):
     ax.set_title("Number of Complaints per Department")
     plt.xticks(rotation=45, ha="right")
 
-    #
+    
     buf = io.BytesIO()
     plt.savefig(buf, format="png")
     buf.seek(0)
@@ -160,3 +168,32 @@ def user_logout(request):
     logout(request)
     messages.success(request, "You have successfully logged out.")
     return redirect("login")
+
+from django.conf import settings
+
+PASSWORD = 'Compl@intM@n@g3r1'  
+
+def password_protect(request):
+    if request.method == 'POST':
+        input_password = request.POST['password']
+        if input_password == PASSWORD:
+            request.session['authenticated'] = True
+            return redirect('view_complaints')
+        else:
+            return render(request, 'app/password_protect.html', {'error': 'Incorrect password'})
+    return render(request, 'app/password_protect.html')
+
+def view_complaints(request):
+    if not request.session.get('authenticated'):
+        return redirect('password_protect')
+    
+    complaints = Complaint.objects.all()
+    return render(request, 'app/view_complaints.html', {'complaints': complaints})
+
+def mark_resolved(request, complaint_id):
+    complaint = get_object_or_404(Complaint, id=complaint_id)
+    complaint.is_resolved = True
+    complaint.resolved_at = now()
+    complaint.save()
+    messages.success(request, f"Complaint {complaint.id} marked as resolved.")
+    return redirect('view_complaints')

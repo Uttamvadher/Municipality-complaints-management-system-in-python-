@@ -132,3 +132,5 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+ADMIN_UNLOCK_TOKEN = "c18a9d1f-23a4-4a5b-99f8-e2b5e1d450fa"
