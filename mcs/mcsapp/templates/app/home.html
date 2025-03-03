@@ -4,17 +4,148 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1e1e1e;
+            color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #2a2a2a;
+            padding: 20px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #333;
+            padding: 10px 0;
+        }
+        nav a {
+            background: linear-gradient(145deg, #3a3a3a, #262626);
+            color: #f0f0f0;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+            padding: 10px 20px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            box-shadow: 3px 3px 6px #1a1a1a, -3px -3px 6px #2a2a2a;
+        }
+        nav a:hover {
+            background: linear-gradient(145deg, #ff9800, #ff6d00);
+            color: #fff;
+            transform: scale(1.05);
+        }
+        .slideshow-container {
+            position: relative;
+            max-width: 40%;
+            margin: auto;
+            overflow: hidden;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        .slides {
+            display: none;
+            width: 100%;
+            border-radius: 10px;
+        }
+        .fade {
+            animation: fadeEffect 2s;
+        }
+        @keyframes fadeEffect {
+            from {opacity: 0.4;} 
+            to {opacity: 1;}
+        }
+        .content-section {
+            text-align: center;
+            margin: 40px 0;
+        }
+        .cards-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .card {
+            background: #2a2a2a;
+            padding: 20px;
+            border-radius: 10px;
+            width: 220px;
+            text-align: center;
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s;
+        }
+        .card:hover {
+            transform: scale(1.05);
+        }
+        .card img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .card h3 {
+            margin-top: 15px;
+            font-size: 18px;
+            color: #ff9800;
+        }
+    </style>
 </head>
 <body>
-    <h1>welocme home!</h1>
+    <header>Civic Care & Urban Development</header>
+    
+    <nav>
+        <a href="{% url 'submit_complaint' %}">Submit Complaint</a>
+        <a href="{% url 'view_complaints' %}">Admin</a>
+        <a href="{% url 'analysis' %}">Analysis</a>
+        <a href="{% url 'logout' %}">Logout</a>
+        
+    </nav>
 
-    <a href="{% url 'submit_complaint' %}" >complain</a>
-    <a href="{% url 'analysis' %}">anilyses</a>
-    <a href="{% url 'logout' %}">Logout</a>
-    <a href="{% url 'view_complaints' %}">Logout</a>
+    <div class="slideshow-container">
+        <img class="slides fade" src="https://i0.wp.com/stanzaliving.wpcomstaging.com/wp-content/uploads/2022/04/1bec2-things-to-do-in-ahmedabad.jpg?fit=1000%2C563&ssl=1" alt="Municipality Services">
+        <img class="slides fade" src="https://s7ap1.scene7.com/is/image/incredibleindia/sabarmati-riverfront-ahmedabad-gujarat-2-attr-hero?qlt=82&ts=1726734999039" alt="City Maintenance">
+        <img class="slides fade" src="https://images.moneycontrol.com/static-mcnews/2024/01/Sabarmati-riverfront-Ahmedabad.-Photo-Gujarat-Tourism-1.jpg?impolicy=website&width=1600&height=900" alt="Public Infrastructure">
+    </div>
 
+    <div class="content-section">
+        <h2>Enhancing City Services for a Better Tomorrow</h2>
+        <p style="color: rgb(124, 218, 244);">We ensure smooth municipal operations, resolving public concerns efficiently and effectively.</p>
+    </div>
 
+    <div class="cards-container">
+        <div class="card">
+            <img src="https://www.shutterstock.com/image-photo/lucknow-uttarpradesh-7-oct-2024-260nw-2541797065.jpg" alt="Waste Management">
+            <h3>Waste Management</h3>
+        </div>
+        <div class="card">
+            <img src="https://images.hindustantimes.com/rf/image_size_960x540/HT/p2/2017/10/16/Pictures/hindustan-repaired-october-gurgaon-october-finally-parveen_35aaee02-b28e-11e7-8b25-96a837358dfc.jpg" alt="Road Maintenance">
+            <h3>Road Maintenance</h3>
+        </div>
+        <div class="card">
+            <img src="https://adaderanaenglish.s3.amazonaws.com/1726107065-adb-water-supply.jpg" alt="Water Supply">
+            <h3>Water Supply</h3>
+        </div>
+    </div>
 
-   
+    <script>
+        let slideIndex = 0;
+        function showSlides() {
+            let slides = document.getElementsByClassName("slides");
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) { slideIndex = 1; }
+            slides[slideIndex - 1].style.display = "block";
+            setTimeout(showSlides, 3000);
+        }
+        showSlides();
+    </script>
 </body>
 </html>

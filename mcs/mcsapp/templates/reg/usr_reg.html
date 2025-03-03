@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=, initial-scale=1.0">
     <title>Registration</title>
-    
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
     {% if messages %}
@@ -32,10 +33,10 @@
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" required>
 
-            <label for="token">Enter Admin Token:</label>
-            <input type="text" id="token" name="token">
+            
             
             <button type="submit">Register</button>
+            <label>Already have an account?</label>
             <a href="{% url 'login'%}">login</a>
         </form>
     </div>

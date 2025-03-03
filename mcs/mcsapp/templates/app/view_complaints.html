@@ -5,22 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>All Complaints</title>
-    <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        table, th, td {
-            border: 1px solid black;
-        }
-        th, td {
-            padding: 8px;
-            text-align: left;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-    </style>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
 </head>
 <body>
     <h1>All Complaints</h1>
@@ -37,7 +24,7 @@
                 <th>Description</th>
                 <th>Created At</th>
                 <th>Resolved At</th>
-                <th>Resolved Status</th>
+                
 
                 <th>Action</th>
             </tr>
@@ -55,7 +42,7 @@
                 <td>{{ complaint.description }}</td>
                 <td>{{ complaint.created_at }}</td>
                 <td>{{ complaint.resolved_at }}</td>
-                <td>{{ complaint.is_resolved|yesno:"Yes,No" }}</td>
+                
 
                 <td>
                    {% if not complaint.is_resolved %}
