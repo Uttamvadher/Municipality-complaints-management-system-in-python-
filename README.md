@@ -20,16 +20,53 @@ The **Municipal Complaint System (MCS)** is a Python-based application designed 
 - **Bootstrap** – Responsive design (if applicable)  
 
 ## 📂 Project Structure  
-```
-MCS-Project/
-│── main.py             # Main script to run the application  
-│── models.py           # Database models  
-│── routes.py           # Routes and API endpoints  
-│── templates/          # HTML templates for UI  
-│── static/             # CSS, JS, and images  
-│── database.db         # SQLite Database (if using SQLite)  
-│── README.md           # Project documentation  
-```
+Django Project Root
+│   manage.py                     # Django management script
+│   structure.txt                  # Project structure file
+│
+├── mcs/                           # Main project settings directory
+│   ├── asgi.py                    # ASGI configuration
+│   ├── settings.py                # Project settings
+│   ├── urls.py                     # URL configurations
+│   ├── wsgi.py                    # WSGI configuration
+│   ├── __init__.py                 # Init file for module recognition
+│   ├── __pycache__/                 # Compiled Python files
+│
+├── mcsapp/                         # Main application
+│   ├── apps.py                     # Application configuration
+│   ├── models.py                   # Database models
+│   ├── urls.py                     # Application-specific URL patterns
+│   ├── views.py                    # Business logic and views
+│   ├── __init__.py                  # Module recognition file
+│   ├── __pycache__/                  # Compiled Python files
+│   │
+│   ├── migrations/                  # Database migration files
+│   │   ├── 0001_initial.py           # Initial migration
+│   │   ├── 0002_alter_complaint_department.py 
+│   │   ├── 0003_admintoken_user_admin_user_is_resolved.py
+│   │   ├── 0004_user_token.py
+│   │   ├── 0005_alter_user_token.py
+│   │   ├── __init__.py
+│   │   ├── __pycache__/              # Compiled migration files
+│   │
+│   ├── static/                        # Static files (CSS, JS, Images)
+│   │   ├── css/
+│   │   │   ├── styles.css             # Stylesheet
+│   │
+│   ├── templates/                      # HTML templates
+│   │   ├── app/                         # Templates for complaints module
+│   │   │   ├── analysis.html
+│   │   │   ├── complaint_form.html
+│   │   │   ├── home.html
+│   │   │   ├── password_protect.html
+│   │   │   ├── view_complaints.html
+│   │   │
+│   │   ├── reg/                         # Templates for user registration & auth
+│   │   │   ├── login.html
+│   │   │   ├── usr_reg.html
+│
+└── __pycache__/                        # Compiled Python files
+
 
 ## 🎯 Objectives  
 - Improve municipal governance by providing a digital complaint management system.  
@@ -48,7 +85,7 @@ MCS-Project/
    ```  
 3⃣ Run the application:  
    ```bash
-   python main.py
+   python manage.py runserver
    ```  
 
 ## 📢 Contributing  
